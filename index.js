@@ -1,3 +1,4 @@
+//修改在线播放
 var authConfig = {
     "siteName": "GoIndex",
     "client_id": "202264815644.apps.googleusercontent.com",
@@ -361,6 +362,28 @@ class view{
 			}
 		}
 	</style>
+<script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
+    <script>
+    $(function () {
+    $('.mdui-list').on('click','li',function(){
+      var href = $(this).children('a').attr('href');
+      console.log(href);
+      if(href.lastIndexOf(".mp4") > -1) {
+              layer.open({
+                type: 1,
+                title: decodeURI(href.substring(href.lastIndexOf("/") + 1, href.length)),
+                shadeClose: true,
+                shade: 0.8,
+                area: ['100%', '100%'],
+                content: '<center><video controls autoplay=true preload=auto style="width:80%;object-fit: cover;" src="' + href + '"></video></center>'
+              });
+              return false;
+            }
+    });
+     
+  });
+    </script>
 </head>
 <body class="mdui-theme-primary-blue-grey mdui-theme-accent-blue">
 	<header class="mdui-appbar mdui-color-theme">
